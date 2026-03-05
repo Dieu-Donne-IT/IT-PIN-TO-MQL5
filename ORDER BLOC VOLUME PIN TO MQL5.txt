@@ -190,9 +190,7 @@ renderOrderBlock (orderBlock ob) =>
             ob.orderSeperator := line.new(na,na,na,na,xloc.bar_time,extend.none,textColor,line.style_dashed,1)
             ob.orderTextSeperator := line.new(na,na,na,na,xloc.bar_time,extend.none,textColor,line.style_solid,1)
 
-        zoneSize = extendZonesDynamic ? na(info.breakTime) ? extendZonesByTime : (info.breakTime - info.startTime) : extendZonesByTime
-        if na(info.breakTime)
-            zoneSize := (time + 1) - info.startTime
+        zoneSize = extendZonesDynamic ? (time + 1) - info.startTime : extendZonesByTime
 
         startX = volumeBarsLeftSide ? info.startTime : info.startTime + zoneSize - zoneSize / 3
         maxEndX = volumeBarsLeftSide ? info.startTime + zoneSize / 3 : info.startTime + zoneSize
